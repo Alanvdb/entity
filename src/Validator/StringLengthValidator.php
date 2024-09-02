@@ -25,8 +25,11 @@ class stringLengthValidator implements ValidatorInterface
         $this->max = $max;
     }
 
-    public function isValid(string $value) : bool
+    public function isValid(string $value, bool $nullable = false) : bool
     {
+        if ($value === null) {
+            return $nullable;
+        }
         $length = strlen($value);
         return $this->min <= $length && $length <= $this->max;
     }
