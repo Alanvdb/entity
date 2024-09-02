@@ -30,9 +30,9 @@ abstract class AbstractEntity
      * 
      * @throws InvalidFillables If no fillables are provided in the setup() method.
      */
-    public function __construct()
+    public function __construct(ValidatorFactory $validatorFactory)
     {
-        $this->setup();
+        $this->setup($validatorFactory);
 
         if (empty($this->fillables)) {
             throw new InvalidFillables('No fillables provided in setup() method.');
@@ -138,5 +138,5 @@ abstract class AbstractEntity
      * 
      * @return void
      */
-    abstract protected function setup() : void;
+    abstract protected function setup(ValidatorFactory $validatorFactory) : void;
 }

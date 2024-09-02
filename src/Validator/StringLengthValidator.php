@@ -10,15 +10,15 @@ class stringLengthValidator implements ValidatorInterface
     protected int $min;
     protected int $max;
 
-    public function __construct(int $min, ?int $max = null)
+    public function __construct(int $min, int $max)
     {
         if ($min < 0) {
             throw new InvalidValidatorParamProvided("String length minimum cannot be lower than 0. Value provided : '$min'.");
         }
-        if ($max !== null && $max < 0) {
+        if ($max < 0) {
             throw new InvalidValidatorParamProvided("String length maximum cannot be lower than 0. Value provided : '$max'.");
         }
-        if ($max !== null && $max < $min) {
+        if ($max < $min) {
             throw new InvalidValidatorParamProvided("String length maximum cannot be lower than minimum. Value provided : max provided: '$max', min provided '$min'.");
         }
         $this->min = $min;
