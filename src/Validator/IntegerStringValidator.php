@@ -14,6 +14,6 @@ class IntegerStringValidator implements ValidatorInterface
 
     public function getErrorMessage(string $label) : string
     {
-        return "$label length must be from $min to $max characters.";
+        return "$label must be an integer number.";
     }
 }
