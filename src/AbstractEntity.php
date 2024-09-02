@@ -13,7 +13,7 @@ abstract class AbstractEntity
     /**
      * @var array<string, mixed> An array of attributes that can be filled.
      */
-    protected array $fillables = [];
+    private array $fillables = [];
 
     /**
      * @var array<string, ValidatorInterface[]> An array of validators associated with fillable attributes.
