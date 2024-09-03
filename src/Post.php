@@ -10,7 +10,6 @@ class Post extends AbstractEntity
     {
         $varcharLengthValidator = $factory->createStringLengthValidator(0, 255);
 
-        $this->addFillables('id', $factory->createNonStrictIntegerValidator());
         $this->addFillables('slug', $factory->createSlugValidator());
         $this->addFillables('title', $varcharLengthValidator);
         $this->addFillables('description', $varcharLengthValidator);
