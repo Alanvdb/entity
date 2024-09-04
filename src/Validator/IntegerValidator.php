@@ -18,6 +18,9 @@ class IntegerValidator implements ValidatorInterface
         if ($max < $min) {
             throw new InvalidValidatorParamProvided("Maximum cannot be lower than minimum. Minimum provided : '$min', Maximum provided : '$max'.");
         }
+        if ($max < 0 && $unsigned) {
+            throw new InvalidValidatorParamProvided("Unsigned maximum cannot be lower than 0. Maximum provided : '$max'.");
+        }
         $this->min = $min;
         $this->max = $max;
         $this->unsigned = $unsigned;
@@ -26,6 +29,10 @@ class IntegerValidator implements ValidatorInterface
 
     public function isValid(mixed $value, bool $nullable = false) : bool
     {
+        // TODO
+        if ($this->strict && !is_int($value)) {
+            return false;
+        }
         return ($value === null) ? $nullable : (bool) preg_match('`^[0-9]+$`', $value);
     }
 

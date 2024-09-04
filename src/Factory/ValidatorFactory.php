@@ -4,7 +4,7 @@ namespace AlanVdb\Entity\Factory;
 
 use AlanVdb\Entity\Validator\StringLengthValidator;
 use AlanVdb\Entity\Validator\SlugValidator;
-use AlanVdb\Entity\Validator\NonStrictIntegerValidator;
+use AlanVdb\Entity\Validator\IntegerValidator;
 
 class ValidatorFactory
 {
@@ -18,8 +18,8 @@ class ValidatorFactory
         return new SlugValidator();
     }
 
-    public function createNonStrictIntegerValidator() : NonStrictIntegerValidator
+    public function createIntegerValidator(int $min, int $max, bool $unsigned = false, bool $strict = false) : IntegerValidator
     {
-        return new NonStrictIntegerValidator();
+        return new IntegerValidator($min, $max, $unsigned, $strict);
     }
 }
